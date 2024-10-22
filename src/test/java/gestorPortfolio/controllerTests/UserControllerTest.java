@@ -1,7 +1,6 @@
 package gestorPortfolio.controllerTests;
 
 import gestorPortfolio.controllers.UserController;
-import gestorPortfolio.dto.project.ProjectRequest;
 import gestorPortfolio.dto.user.UserRequest;
 import gestorPortfolio.dto.user.UserResponse;
 import gestorPortfolio.enums.Position;
@@ -36,7 +35,6 @@ public class UserControllerTest {
 
     @BeforeEach
     void setup() {
-        // Inicializa os objetos comuns para todos os testes
         userRequest = new UserRequest("John Doe", "12345678900", LocalDate.of(1992, 2, 2), Position.MANAGER);
         userResponse = new UserResponse(1L, "John Doe", "12345678900", LocalDate.of(1992, 2, 2), Position.MANAGER);
 
