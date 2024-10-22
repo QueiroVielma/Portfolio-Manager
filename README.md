@@ -13,7 +13,7 @@ O Sistema projetado para gerenciar os dados do portfólio de projetos de uma emp
 - Swagger
 
 ## Como Executar o Projeto
-- git clone <link-do-repositorio>
+- Clone o repositório: git clone https://github.com/QueiroVielma/Portfolio-Manager.git
 - Acesse seu sistema de gerenciamento de banco de dados e crie database gestor
 
 ## Swagger
