@@ -1,5 +1,6 @@
 package gestorPortfolio.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +35,10 @@ public class Project {
 
     private int status;
 
+    private int risk;
+
     @ManyToMany
+    @JsonManagedReference
     @JoinTable(
             name = "projects_users",
             joinColumns = @JoinColumn(name = "project_id"),
@@ -43,5 +47,6 @@ public class Project {
     private List <User> members;
 
     @ManyToOne
+    @JsonManagedReference
     private User responsibleManager;
 }

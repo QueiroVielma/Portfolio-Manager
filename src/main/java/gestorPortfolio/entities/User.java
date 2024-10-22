@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -23,9 +24,17 @@ public class User {
 
     private String name;
 
+    private String cpf;
+
+    private LocalDate dateOfBirth;
+
+    private int position;
+
     @ManyToMany (mappedBy = "members")
+    @JsonBackReference
     private List<Project> projectsMembers;
 
     @OneToMany (mappedBy = "responsibleManager")
+    @JsonBackReference
     private List<Project> projectsManager;
 }
