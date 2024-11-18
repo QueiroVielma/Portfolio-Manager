@@ -23,20 +23,20 @@ public class ProjectRequest {
     private LocalDate expectedEndDate;
 
     @NotNull
-    private Long managerId;
+    private Long responsibleManager;
     @NotNull
     private double budget;
     @NotBlank(message = "Description is mandatory")
     private String description;
 
-    private Risk riskProject;
+    private int riskProject;
 
     public Project project (){
         Project project= new Project();
         project.setName(this.nameProject);
         project.setExpectedEEndDate(this.expectedEndDate);
         project.setTotalBudget(this.budget);
-        project.setRisk(this.riskProject.getValue());
+        project.setRisk(this.riskProject);
         project.setDescription(this.description);
         return project;
     }

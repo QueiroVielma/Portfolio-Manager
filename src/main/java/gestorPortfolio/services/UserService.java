@@ -28,7 +28,7 @@ public class UserService {
         user.setName(userRequest.getName());
         user.setDateOfBirth(userRequest.getDateBirth());
         user.setCpf(userRequest.getCpf());
-        user.setPosition(userRequest.getPositionUser().getValue());
+        user.setPosition(userRequest.getPositionUser());
 
         return UserResponse.user(this.userRespository.save(user));
     }

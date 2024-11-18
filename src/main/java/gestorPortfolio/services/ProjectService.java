@@ -23,8 +23,8 @@ public class ProjectService {
     UserRespository userRespository;
 
     public ProjectResponse save(ProjectRequest projectRequest){
-        User manager= this.userRespository.findById(projectRequest.getManagerId())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user ID: " + projectRequest.getManagerId()));
+        User manager= this.userRespository.findById(projectRequest.getResponsibleManager())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user ID: " + projectRequest.getResponsibleManager()));
         if (manager.getPosition()!=2){
             throw new IllegalArgumentException("User is not a manager: " + manager.getName());
         }
@@ -68,8 +68,8 @@ public class ProjectService {
         }
     }
 
-    public String attributeMembersById(MenbersIdRequest menbersId, Long projectId){
-        List<User> menbers=userRespository.findAllById(menbersId.getMenbersId());
+    public String attributeMembersById(MembersIdRequest menbersId, Long projectId){
+        List<User> menbers=userRespository.findAllById(menbersId.getMembersId());
         Project project= this.findById(projectId);
         project.setMembers(menbers);
         projectRepository.save(project);
@@ -91,6 +91,10 @@ public class ProjectService {
         }
         projectRepository.save(project);
         return "Status: "+ Status.fromValue(project.getStatus());
+    }
+
+    public List<Project> findProjectsByName(String name) {
+        return projectRepository.findByNameContainingIgnoreCase(name);
     }
 
 }

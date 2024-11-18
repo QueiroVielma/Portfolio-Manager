@@ -1,6 +1,5 @@
 package gestorPortfolio.servicesTests;
 
-import gestorPortfolio.dto.project.MenbersIdRequest;
 import gestorPortfolio.dto.project.ProjectProgress;
 import gestorPortfolio.dto.project.ProjectRequest;
 import gestorPortfolio.dto.project.ProjectResponse;
@@ -13,14 +12,12 @@ import gestorPortfolio.repositoies.UserRespository;
 import gestorPortfolio.services.ProjectService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

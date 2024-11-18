@@ -16,10 +16,10 @@ import java.time.LocalDate;
 public class UserResponse {
 
     private Long id;
-    private String nome;
+    private String name;
     private String cpf;
     private LocalDate dateBirth;
-    private Position positionUser;
+    private int positionUser;
 
     public static UserResponse user(User user) {
         return new UserResponse(
@@ -27,7 +27,7 @@ public class UserResponse {
                 user.getName(),
                 user.getCpf(),
                 user.getDateOfBirth(),
-                Position.fromValue(user.getPosition())
+                user.getPosition()
         );
     }
 }

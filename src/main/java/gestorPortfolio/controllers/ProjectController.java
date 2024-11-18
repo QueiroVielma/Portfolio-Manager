@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/project")
-
+@CrossOrigin("*")
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
@@ -24,9 +24,9 @@ public class ProjectController {
     public ResponseEntity<String> save(@Valid @RequestBody ProjectRequest request){
         try{
             projectService.save(request);
-            return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully.");
+            return ResponseEntity.status(HttpStatus.CREATED).body("Project created successfully.");
         }catch (Exception err){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to create user: " + err.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to create project: " + err.getMessage());
         }
     }
 
@@ -37,7 +37,7 @@ public class ProjectController {
             return ResponseEntity.ok(projects);
 
         }catch (Exception err){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to List users: " + err.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to List project: " + err.getMessage());
         }
     }
 
@@ -57,9 +57,9 @@ public class ProjectController {
     public ResponseEntity<?> update(@Valid @RequestBody UpdateRequest request, @PathVariable Long id) {
         try {
             ProjectResponse result = projectService.update(request, id);
-            return ResponseEntity.status(HttpStatus.OK).body(result);
+            return ResponseEntity.status(HttpStatus.OK).body("Project created successfully.");
         } catch (Exception err) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update user: " + err.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update project: " + err.getMessage());
         }
     }
 
@@ -73,11 +73,11 @@ public class ProjectController {
         }
     }
 
-    @PutMapping("/menbers/{id}")
-    public ResponseEntity<String> attributeMembersById(@Valid @RequestBody MenbersIdRequest request, @PathVariable Long id) {
+    @PutMapping("/members/{id}")
+    public ResponseEntity<String> attributeMembersById(@Valid @RequestBody MembersIdRequest request, @PathVariable Long id) {
         try {
             String result = projectService.attributeMembersById(request, id);
-            return ResponseEntity.status(HttpStatus.OK).body(result);
+            return ResponseEntity.status(HttpStatus.OK).body("Project created successfully.");
         } catch (Exception err) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update menbers: " + err.getMessage());
         }
@@ -90,8 +90,13 @@ public class ProjectController {
             String result = projectService.updateStatus(request, id);
             return ResponseEntity.status(HttpStatus.OK).body(result);
         } catch (Exception err) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update user: " + err.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update project: " + err.getMessage());
         }
+    }
+
+    @GetMapping("/findByTitulo")
+    public List<Project> findByTitulo(@RequestParam String nome) {
+        return projectService.findProjectsByName(nome);
     }
 
 }

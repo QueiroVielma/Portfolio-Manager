@@ -30,14 +30,14 @@ public class UserRequest {
     @NotNull
     private LocalDate dateBirth;
     @NotNull
-    private Position positionUser;
+    private int positionUser;
 
     public User user() {
         User user=new User();
         user.setName(this.name);
         user.setCpf(this.cpf);
         user.setDateOfBirth(this.dateBirth);
-        user.setPosition(this.positionUser.getValue());
+        user.setPosition(positionUser);
         return user ;
     }
 }

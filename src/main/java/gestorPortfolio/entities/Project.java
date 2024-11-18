@@ -37,7 +37,7 @@ public class Project {
 
     private int risk;
 
-    @ManyToMany
+    @ManyToMany (cascade = CascadeType.ALL)
     @JsonManagedReference
     @JoinTable(
             name = "projects_users",

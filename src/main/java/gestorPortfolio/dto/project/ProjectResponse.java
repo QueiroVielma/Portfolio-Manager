@@ -19,14 +19,14 @@ import java.util.List;
 
 public class ProjectResponse {
     private Long id;
-    private String name;
+    private String nameProject;
     private LocalDate startDate;
     private LocalDate expectedEEndDate;
     private LocalDate actualEndDate;
-    private double totalBudget;
+    private double budget;
     private String description;
-    private Status status;
-    private Risk risk;
+    private int status;
+    private int riskProject;
     private List<User> members;
     private User responsibleManager;
 
@@ -40,8 +40,8 @@ public class ProjectResponse {
             project.getActualEndDate(),
             project.getTotalBudget(),
             project.getDescription(),
-            Status.fromValue(project.getStatus()),
-            Risk.fromValue(project.getRisk()),
+            project.getStatus(),
+            project.getRisk(),
             project.getMembers(),
             project.getResponsibleManager()
         );
